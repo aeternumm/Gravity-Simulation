@@ -12,7 +12,9 @@ public class main {
                 "Jupiter",
                 "Saturn",
                 "Uranus",
-                "Neptune"
+                "Neptune",
+                "Mercury",
+                "Venus"
         };
         int choice = JOptionPane.showOptionDialog(null, "Select the first planet to simulate:", "Planet Selection",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, planets, planets[0]);

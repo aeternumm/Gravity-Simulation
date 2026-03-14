@@ -31,6 +31,10 @@ public class SystemPanel extends JPanel implements Runnable {
                  return new Uranus(x, y); // Uranus
              case 5:
                  return new Neptune(x, y); // Neptune
+                case 6:
+                    return new Mercury(x, y); // Mercury
+                case 7:
+                    return new Venus(x, y); // Venus
              default:
                  return new Earth(x, y);
          }
@@ -38,9 +42,6 @@ public class SystemPanel extends JPanel implements Runnable {
 
     //Initialize
     Thread gameThread;
-    Earth earth;
-    Mars mars;
-
 
     //Apply gravity between the two planets
     public void applyGravity(Planet pl1, Planet pl2) {
@@ -64,8 +65,8 @@ public class SystemPanel extends JPanel implements Runnable {
     }
         //Update the position of the planets
      public void update() {
-        earth.update();
-        mars.update();
+        pl1.update();
+        pl2.update();
      }
      //Draw the Screen
      public void paintComponent(Graphics g) {
