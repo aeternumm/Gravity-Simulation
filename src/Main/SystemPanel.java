@@ -6,6 +6,7 @@ import Stars.Sun;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 public class SystemPanel extends JPanel implements Runnable {
     int NumPlanets;
@@ -118,7 +119,9 @@ public class SystemPanel extends JPanel implements Runnable {
          super.paintComponent(g);
          Graphics2D g2 = (Graphics2D) g;
          //Draw Here
+         AffineTransform oldTransform = g2.getTransform();
          g2.translate(offsetX, offsetY);
+
          if (SimulationMode == 0) {
              star.draw(g2);
              if (NumPlanets == 1) {
@@ -135,6 +138,8 @@ public class SystemPanel extends JPanel implements Runnable {
              pl1.draw(g2);
              pl2.draw(g2);
          }
+         //Reset the transform to avoid affecting other drawings
+         g2.setTransform(oldTransform);
 
          if (exploded) {
              g2.setColor(Color.WHITE);
@@ -161,6 +166,22 @@ public class SystemPanel extends JPanel implements Runnable {
             lastTime = currentTime;
             if (delta >= 1) {
                 if (!exploded){
+                    if (SimulationMode ==0) {
+                        if (NumPlanets >= 1) {
+                            applyGravity(star, pl1);
+                            pl1.update();
+                        }
+                        if (NumPlanets >= 2) {
+                            applyGravity(star, pl2);
+                            pl2.update();
+                        }
+                        if (NumPlanets >= 3) {
+                            applyGravity(star, pl3);
+                            pl3.update();
+                        }
+                    } else if (SimulationMode == 1) {
+                        applyGravity(pl1, pl2);
+                    }
                     double dx = star.x - pl1.x;
                     double dy = star.y - pl1.y;
                     double distance = Math.sqrt(dx * dx + dy * dy);
