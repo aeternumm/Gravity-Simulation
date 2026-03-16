@@ -2,8 +2,8 @@ package Main;
 
 import javax.swing.*;
 
-public class main {
-    static void main() {
+public class Main {
+    public static void main(String[] args) {
         //Type of star
         int star = 0;
         //Type of planet

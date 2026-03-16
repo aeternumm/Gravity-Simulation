@@ -65,26 +65,52 @@ public class SystemPanel extends JPanel implements Runnable {
     }
 
     private Planet createStar(int choice, double x, double y) {
-        return switch (choice) {
-            case 0 -> new Sun(x, (int) y); // Sun
-            case 1 -> new Sirius(x, y); // Sirius
-            default -> new Sun(x, (int) y);
-        };
+        Planet star;
+        switch (choice) {
+            case 0:
+                star = new Sun(x, (int) y); // Sun
+                break;
+            case 1:
+                star = new Sirius(x, y); // Sirius
+                break;
+            default:
+                star = new Sun(x, (int) y);
+        }
+        return star;
 
     }
 
     private Planet createPlanet(int type, double x, double y) {
-        return switch (type) {
-            case 0 -> new Earth(x, y);
-            case 1 -> new Mars(x, y);
-            case 2 -> new Jupiter(x, y); // Jupiter
-            case 3 -> new Saturn(x, y); // Saturn
-            case 4 -> new Uranus(x, y); // Uranus
-            case 5 -> new Neptune(x, y); // Neptune
-            case 6 -> new Mercury(x, y); // Mercury
-            case 7 -> new Venus(x, y); // Venus
-            default -> new Earth(x, y);
-        };
+        Planet planet;
+        switch (type) {
+            case 0:
+                planet = new Earth(x, y);
+                break;
+            case 1:
+                planet = new Mars(x, y);
+                break;
+            case 2:
+                planet = new Jupiter(x, y); // Jupiter
+                break;
+            case 3:
+                planet = new Saturn(x, y); // Saturn
+                break;
+            case 4:
+                planet = new Uranus(x, y); // Uranus
+                break;
+            case 5:
+                planet = new Neptune(x, y); // Neptune
+                break;
+            case 6:
+                planet = new Mercury(x, y); // Mercury
+                break;
+            case 7:
+                planet = new Venus(x, y); // Venus
+                break;
+            default:
+                planet = new Earth(x, y);
+        }
+        return planet;
     }
 
 
